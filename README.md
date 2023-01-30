@@ -6,7 +6,7 @@ Trying to create an portal where users can request for help(financial).
 
 ---
 ## Web-application
-  -python
+  - python
   - django
   - postgress
   - html, css and JS
