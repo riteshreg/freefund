@@ -13,15 +13,14 @@ export async function middleware(req: NextRequest) {
   } = await supabase.auth.getSession()
 
   
-  if (session?.user.email?.endsWith('@gmail.com')) {
+  if (session?.user.email?.endsWith('.com')) {
     // Authentication successful, forward request to protected route.
     return res
   }
   const redirectUrl = req.nextUrl.clone()
-  redirectUrl.pathname = '/create_account'
+  redirectUrl.pathname = '/login'
   redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname)
   return NextResponse.redirect(redirectUrl)
-
 }
 
 
