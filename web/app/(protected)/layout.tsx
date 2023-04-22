@@ -1,9 +1,10 @@
 import "../globals.css";
 import "server-only";
 
-import SupabaseListener from "../../components/SupaListener";
-import SupabaseProvider from "../../components/SupaProvider";
+import SupabaseListener from "../../SupaComponents/SupaListener";
+import SupabaseProvider from "../../SupaComponents/SupaProvider";
 import { createClient } from '../../libs/supaServerClient'
+import Navbar from "@/components/Navbar";
 
 
 export const metadata = {
@@ -30,7 +31,10 @@ export default async function RootLayout({
       <body>
       <SupabaseProvider>
           <SupabaseListener serverAccessToken={session?.access_token} />
+          <div>
+          <Navbar/>
           {children}
+          </div>
         </SupabaseProvider>
         </body>
     </html>
