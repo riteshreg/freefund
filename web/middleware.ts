@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export async function middleware(req: NextRequest) {
+  
   const res = NextResponse.next()
-
   const supabase = createMiddlewareSupabaseClient({ req, res })
 
   const {
@@ -13,12 +13,12 @@ export async function middleware(req: NextRequest) {
   } = await supabase.auth.getSession()
 
   
-  if (session?.user.email?.endsWith('.com')) {
+  if (session?.user) {
     // Authentication successful, forward request to protected route.
     return res
   }
   const redirectUrl = req.nextUrl.clone()
-  redirectUrl.pathname = '/login'
+  redirectUrl.pathname = '/create_account'
   redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname)
   return NextResponse.redirect(redirectUrl)
 
@@ -28,3 +28,6 @@ export async function middleware(req: NextRequest) {
 export const config = {
     matcher: '/',
   }
+
+
+ 
