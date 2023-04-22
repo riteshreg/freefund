@@ -1,7 +1,8 @@
 "use client";
-import { createClient } from "@/libs/supaBrowserClient";
+
 import Link from "next/link";
 import { useState } from "react";
+import { createClient } from "@/SupabaseComponents/SupabaseBrowserClient";
 
 interface FormData {
   full_name: string;
@@ -11,7 +12,8 @@ interface FormData {
 }
 
 export default function CreateAccount() {
-  const supabase = createClient();
+
+  const supabase = createClient()
 
   const [formData, setFormData] = useState<FormData>({
     full_name: "",
