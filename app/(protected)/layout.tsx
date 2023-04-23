@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar'
 import SupabaseProvider from '../../SupabaseComponents/SupabaseProvider'
 import '../globals.css'
 import { Inter } from 'next/font/google'
@@ -18,7 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SupabaseProvider>
+          <div>
+        <Navbar/>
         {children}
+          </div>
          </SupabaseProvider> 
         </body>
     </html>
