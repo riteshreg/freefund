@@ -12,9 +12,10 @@ interface FormData {
 }
 
 export default function CreateAccount() {
+  const supabase = createClient();
 
-  const supabase = createClient()
-
+  const [showPassword, setShowPassword] = useState(false);
+  
   const [formData, setFormData] = useState<FormData>({
     full_name: "",
     email: "",
@@ -29,15 +30,26 @@ export default function CreateAccount() {
     }));
   }
 
+  const [showSendMagicLink, setShowSendMagicLink] = useState(false);
+
   async function handleCreateAccount() {
     const { data, error } = await supabase.auth.signUp({
       email: formData.email,
-      password: formData.password
+      password: formData.password,
     });
-    console.log(data, error)
+    if (error) {
+      throw error;
+    }
+    setShowSendMagicLink(true);
   }
 
-
+  showSendMagicLink && (
+    <div>
+      <h1>
+        Show magic link{" "}
+      </h1>
+    </div>
+  );
 
   return (
     <div>
@@ -62,24 +74,22 @@ export default function CreateAccount() {
               <hr className="w-full bg-gray-400" />
             </div>
 
-              <div className="mt-3">
-                <label
-                  id="First Name"
-                  className="text-sm font-medium leading-none text-gray-800"
-                >
-                  Full Name
-                </label>
+            <div className="mt-3">
+              <label
+                id="First Name"
+                className="text-sm font-medium leading-none text-gray-800"
+              >
+                Full Name
+              </label>
 
-                <input
-                  aria-labelledby="first_name"
-                  type="text"
-                  name="full_name"
-                  onChange={handleFormChange}
-                  className="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
-                />
-              </div>
-             
-     
+              <input
+                aria-labelledby="first_name"
+                type="text"
+                name="full_name"
+                onChange={handleFormChange}
+                className="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
+              />
+            </div>
 
             <div className="mt-2">
               <label
@@ -123,10 +133,15 @@ export default function CreateAccount() {
                   id="pass"
                   name="password"
                   onChange={handleFormChange}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   className="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 />
-                <div className="absolute right-0 mt-2 mr-3 cursor-pointer">
+                <div
+                  className="absolute right-0 mt-2 mr-3 cursor-pointer"
+                  onClick={() => {
+                    setShowPassword((prevState) => !prevState);
+                  }}
+                >
                   <svg
                     width="16"
                     height="16"
@@ -150,8 +165,6 @@ export default function CreateAccount() {
               </p>
               <hr className="w-full bg-gray-400  " />
             </div>
-
-           
 
             <div className="mt-6">
               <button
