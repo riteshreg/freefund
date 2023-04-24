@@ -34,8 +34,7 @@ export default function Login() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
     });
-   console.log(data, error);
-   
+    console.log(data, error);
   }
 
   return (
@@ -143,9 +142,17 @@ export default function Login() {
               />
             </div>
             <div className="mt-3  w-full">
-              <label className="text-sm font-medium leading-none text-gray-800">
-                Password
-              </label>
+              <div className="flex justify-between mt-4">
+                <label className="text-sm font-medium leading-none text-gray-800">
+                  Password
+                </label>
+                <Link
+                  href={'/forget_password'}
+                  className="text-sm font-medium leading-none text-gray-800"
+                >
+                  Forget Password?
+                </Link>
+              </div>
               <div className="relative flex items-center justify-center">
                 <input
                   name="password"
