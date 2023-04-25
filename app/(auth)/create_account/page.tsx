@@ -15,7 +15,6 @@ export default function CreateAccount() {
   const supabase = createClient();
 
   const [showPassword, setShowPassword] = useState(false);
-  
   const [formData, setFormData] = useState<FormData>({
     full_name: "",
     email: "",
@@ -45,9 +44,7 @@ export default function CreateAccount() {
 
   showSendMagicLink && (
     <div>
-      <h1>
-        Show magic link{" "}
-      </h1>
+      <h1>Show magic link</h1>
     </div>
   );
 
@@ -138,9 +135,7 @@ export default function CreateAccount() {
                 />
                 <div
                   className="absolute right-0 mt-2 mr-3 cursor-pointer"
-                  onClick={() => {
-                    setShowPassword((prevState) => !prevState);
-                  }}
+                  onClick={() => {}}
                 >
                   <svg
                     width="16"
