@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { createClient } from "@/SupabaseComponents/SupabaseBrowserClient";
+import MagicEmail from "@/components/MagicEmail";
 
 interface FormData {
   full_name: string;
@@ -42,11 +43,12 @@ export default function CreateAccount() {
     setShowSendMagicLink(true);
   }
 
-  showSendMagicLink && (
-    <div>
-      <h1>Show magic link</h1>
-    </div>
-  );
+
+ if(showSendMagicLink) {
+return(  <MagicEmail/>)
+ }
+  
+
 
   return (
     <div>

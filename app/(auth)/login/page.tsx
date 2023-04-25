@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
+  const [showPassword,setshowPassword]=useState(false)
   const supabase = createClient();
 
   const [formData, setFormData] = useState({
@@ -158,10 +159,10 @@ export default function Login() {
                   name="password"
                   onChange={handleFormChange}
                   id="pass"
-                  type="password"
+                  type={showPassword?'text':'password'}
                   className="bg-gray-200 border rounded  text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2"
                 />
-                <div className="absolute right-0 mt-2 mr-3 cursor-pointer">
+                <div className="absolute right-0 mt-2 mr-3 cursor-pointer" onClick={()=>setshowPassword((prevState) => !prevState)}>
                   <svg
                     width="16"
                     height="16"
