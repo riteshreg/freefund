@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import SupabaseProvider from '../../SupabaseComponents/SupabaseProvider'
 import '../globals.css'
 import { Inter } from 'next/font/google'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +22,9 @@ export default function RootLayout({
         <SupabaseProvider>
           <div>
         <Navbar/>
-        {children}
+       
+        
+        {children} <Footer/>
           </div>
          </SupabaseProvider> 
         </body>
