@@ -4,6 +4,10 @@
 .email-verification-animation {
   animation: email-verification 1s ease-in-out;
 }
+
+.primary-button {
+  @apply rounded-md py-2 px-4 bg-blue shadow outline-none hover:bg-yellow-500;
+}
 @keyframes email-verification {
   0% {
     transform: scale(1);
