@@ -1,5 +1,6 @@
 
 import PayNow from "@/components/PayNow";
+import WordOfSupport from "@/components/WordOfSupport";
 import Card from "@/libsComponents/Card";
 import HorizontalLine from "@/libsComponents/HorizontalLine";
 import { TagIcon, UserIcon,ArrowTrendingUpIcon, StarIcon } from "@heroicons/react/24/outline";
@@ -53,7 +54,7 @@ export default function IndividualFundingPage() {
                 Steve is one of the trusted and knowledgeable people within Houston regarding Pokémon. A true leader of the community. It hurts us to see him suffer such a loss. We only wish to help him honor the memory of his son by raising money for flowers and funeral costs. That his Pokémon family is here to help.
               </p>
             </div>
-            <div className="flex space-x-6 font-semibold px-2 my-5">
+            <div className="flex space-x-1 font-semibold px-2 my-5 max-w-[98%]">
               <button className="bg-[#fdb72f] w-full py-3 px-8 rounded-lg">
                 Donate
               </button>
@@ -62,6 +63,13 @@ export default function IndividualFundingPage() {
               </button>
             </div>
             <HorizontalLine limitWidth={true}/>
+            <div>
+              <WordOfSupport/>
+              <WordOfSupport/>
+              <WordOfSupport/>
+              <WordOfSupport/>
+              <WordOfSupport/>
+            </div>
           </div>
          <div className="w-[30%]">
             <PayNow/>
