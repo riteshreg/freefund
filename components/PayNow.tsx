@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export default function PayNow(){
     
     const [scrollY, setScrollY] = useState(0);
+    
     useEffect(() => {
         const handleScroll = () => {
           setScrollY(window.scrollY);
