@@ -1,10 +1,12 @@
 'use client'
 
 import { useSupabase } from "@/SupabaseComponents/SupabaseProvider"
+import { useRouter } from "next/navigation"
 
 export default function Navbar(){
 
     const {supabase} = useSupabase()
+
 
    async function handleLogout(){
         const {error} = await supabase.auth.signOut()

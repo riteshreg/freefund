@@ -1,5 +1,11 @@
-export default function HorizontalLine(){
+interface Props{
+    limitWidth?:boolean
+}
+
+export default function HorizontalLine({limitWidth}:Props){
     return(
-            <hr  className=""/>
+        <div className={`${limitWidth && 'max-w-[95%]'}`}>
+            <hr  className="border-t border-gray-400 my-8"/>
+        </div>
         )
 }
