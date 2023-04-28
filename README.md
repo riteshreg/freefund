@@ -1,4 +1,3 @@
-dipak
 
 ## Getting Started
 
