@@ -1,4 +1,12 @@
 
+## Persons behind this project:
+  -riteshregmi@gmail.com
+  -utshubkaphle@gmail.com
+  -aangbooosuzan@gmail.com
+
+  
+  
+
 ## Getting Started
 
 First, run the development server:
