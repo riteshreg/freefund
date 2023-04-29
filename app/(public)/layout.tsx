@@ -24,9 +24,9 @@ export default function RootLayout({
         <SupabaseProvider>
           <div>
         <Navbar/>
-       
-        
-        {children} <Footer/>
+            
+        {children}
+       <Footer/>
           </div>
          </SupabaseProvider> 
         </body>

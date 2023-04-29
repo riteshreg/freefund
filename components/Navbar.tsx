@@ -1,16 +1,26 @@
 "use client";
 
 import { useSupabase } from "@/SupabaseComponents/SupabaseProvider";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { useEffect, useState } from "react";
+
+function ReturnCssToNavbar(pathArray: Number, scrollY?: Number) {
+  switch (pathArray) {
+    case 3:
+      return "h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full";
+    case 4: return 'bg-blue-700'
+  }
+}
+
 export default function Navbar() {
   const { supabase } = useSupabase();
+  const currentPath = usePathname();
 
-  async function handleLogout() {
-    const { error } = await supabase.auth.signOut();
-  }
+  const pathArray = currentPath.split("/");
+  console.log(pathArray, pathArray.length);
+
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -24,15 +34,41 @@ export default function Navbar() {
     };
   }, []);
 
+  async function handleLogout() {
+    const { error } = await supabase.auth.signOut();
+  }
+
+ 
+  if(pathArray.length === 4){
+    return(
+      <div className="flex text-gray-200 bg-slate-600 h-14 justify-between px-4">
+        <h1>
+        FreeFund
+        </h1>
+        <h1>Login</h1>
+      </div>
+    )
+  }
+
+
   return (
     <>
-      <header>
+      <header className="">
         <div
           className={
-            scrollY
-              ? ` bg-white fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full`
-              : `  bg-white absolute left-32 right-32 h-24 rounded-full my-8
-          overflow-hidden flex items-center justify-between px-4 shadow-md`
+            `
+            ${
+              pathArray.length == 2 &&
+              (scrollY
+                ? "fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full"
+                : "  absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md")
+            }
+           
+          ${ReturnCssToNavbar(pathArray.length)}                   
+            
+          bg-white
+          `
+            //
           }
         >
           {" "}
