@@ -1,14 +1,16 @@
 'use client'
 
 import { useSupabase } from "@/SupabaseComponents/SupabaseProvider"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid"
 export default function Navbar(){
 
     const {supabase} = useSupabase()
-
+  // const pathname = usePathname()
+  // const pathroutes = pathname.split('/')
+  // console.log(pathroutes)
 
    async function handleLogout(){
         const {error} = await supabase.auth.signOut()
