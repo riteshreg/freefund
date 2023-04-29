@@ -57,8 +57,8 @@ export default function Navbar() {
             ${
               pathArray.length == 2 &&
               (scrollY
-                ? "fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full"
-                : "  absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md")
+                ? "fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full z-50"
+                : "absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50")
             }
            
           ${ReturnCssToNavbar(pathArray.length)}                   
