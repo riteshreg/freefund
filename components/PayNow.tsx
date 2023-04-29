@@ -44,8 +44,10 @@ export default function PayNow(){
             7,613 people just donated
               </h1>
             </div>
+
+            <div className="space-y-0">
             <HorizontalLine/>
-            <div className="flex space-x-4 py-3 ">
+            <div className="flex space-x-2 py-0 ">
               <div className="bg-[#f1f1f1] rounded-full min-w-[3rem] flex justify-center items-center ">
               <UserIcon className="h-6"/>
               </div>
@@ -57,10 +59,10 @@ export default function PayNow(){
                   <Link href={'#'} className="underline text-sm">Top Donation</Link>
                 </div>
               </div>
-            </div>
-            
-              <HorizontalLine/>
-            <div className="flex space-x-4 py-3 ">
+            </div>       
+
+            <HorizontalLine/>
+            <div className="flex space-x-2 py-0 ">
               <div className="bg-[#f1f1f1] rounded-full min-w-[3rem] flex justify-center items-center ">
               <UserIcon className="h-6"/>
               </div>
@@ -74,21 +76,10 @@ export default function PayNow(){
               </div>
             </div>
 
-
-            <HorizontalLine/>
-            <div className="flex space-x-4 py-3 ">
-              <div className="bg-[#f1f1f1] rounded-full min-w-[3rem] flex justify-center items-center ">
-              <UserIcon className="h-6"/>
-              </div>
-              <div className="flex flex-col">
-                <h1>Ritesh Khadka</h1>
-                <div className="flex  items-center space-x-2">
-                  <h1 className="font-semibold text-sm">$1000</h1>
-                  <p>•</p>
-                  <Link href={'#'} className="underline text-sm">Top Donation</Link>
-                </div>
-              </div>
             </div>
+
+
+          
             <div className="flex space-x-4 mt-4">
               <button className="border-2 border-[#20b36f] rounded-md px-4 w-[30%] py-1">see all</button>
               <button className="border-2 flex items-center justify-around border-[#525252]  rounded-md w-[70%] px-4 py-1">

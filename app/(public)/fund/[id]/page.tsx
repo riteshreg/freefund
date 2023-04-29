@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const link =
-  "https://images.gofundme.com/1lymaHvJQbGDItja18xJEZJ9V5g=/720x405/https://d2g8igdw686xgo.cloudfront.net/72477863_1682268262801439_r.jpeg";
+  "https://images.gofundme.com/yDMz0IUbo4m8NxEB3QBFY5OZepQ=/640x480/https://d2g8igdw686xgo.cloudfront.net/72546271_1682534329737438_r.jpeg";
 
 export default function IndividualFundingPage() {
 

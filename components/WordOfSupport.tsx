@@ -3,7 +3,7 @@ import { UserCircleIcon } from "@heroicons/react/24/solid";
 export default function WordOfSupport(){
     return(
         <div className="my-5">
-            <div className="flex gap-3">
+            <div className="flex gap-1">
                 <div className="bg-green-100 text-green-700 rounded-full h-10 w-10 p-1 flex justify-center items-center">
                 <UserCircleIcon className="h-24"/>
                 </div>
