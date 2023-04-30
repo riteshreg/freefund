@@ -6,7 +6,7 @@
 }
 
 .primary-button {
-  @apply rounded-md py-2 px-4 bg-blue shadow outline-none hover:bg-yellow-500;
+  @apply rounded-md py-2 px-4 bg-blue-200 shadow outline-none hover:bg-yellow-500;
 }
 .hover_box:hover {
   background-color: rgba(212, 212, 212, 0.676);
@@ -16,9 +16,9 @@
 }
 
 @layer base {
-  input[type='number']::-webkit-outer-spin-button,
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number'] {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"] {
     -webkit-appearance: none;
     margin: 0;
     -moz-appearance: textfield !important;

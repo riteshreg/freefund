@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Card from "@/libsComponents/Card";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
@@ -8,15 +8,15 @@ const link =
   "https://images.gofundme.com/yDMz0IUbo4m8NxEB3QBFY5OZepQ=/640x480/https://d2g8igdw686xgo.cloudfront.net/72546271_1682534329737438_r.jpeg";
 
 export default function Donate() {
-  const [donationAmmount, setDonationAmmount] = useState('')
+  const [donationAmmount, setDonationAmmount] = useState("");
 
-  function handleDonationInputFieldChange(event:React.ChangeEvent<HTMLInputElement>){
-    setDonationAmmount(event.target.value.replace(/[^0-9]/g, ''))
-
+  function handleDonationInputFieldChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setDonationAmmount(event.target.value.replace(/[^0-9]/g, ""));
   }
 
   console.log(donationAmmount);
-  
 
   return (
     <div>
@@ -56,16 +56,16 @@ export default function Donate() {
                   <span className="">RS</span> <span className="">Nepali</span>
                 </div>
                 <div className="text-3xl w-full font-bold text-gray-700">
-                <input
-                  onChange={handleDonationInputFieldChange}
-                  type="text"
-                  id="checkout-donation"
-                  name="donationAmount"
-                  maxLength={6}
-                  value={donationAmmount}
-                  className=" text-right w-[85%] h-full border-none outline-none"
-                />
-                <span className="">.00</span>
+                  <input
+                    onChange={handleDonationInputFieldChange}
+                    type="text"
+                    id="checkout-donation"
+                    name="donationAmount"
+                    maxLength={6}
+                    value={donationAmmount}
+                    className=" text-right w-[85%] h-full border-none outline-none"
+                  />
+                  <span className="">.00</span>
                 </div>
               </div>
             </div>
