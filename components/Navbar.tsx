@@ -10,7 +10,8 @@ function ReturnCssToNavbar(pathArray: Number, scrollY?: Number) {
   switch (pathArray) {
     case 3:
       return "h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full";
-    case 4: return 'bg-blue-700'
+    case 4:
+      return "bg-blue-700";
   }
 }
 
@@ -38,18 +39,14 @@ export default function Navbar() {
     const { error } = await supabase.auth.signOut();
   }
 
- 
-  if(pathArray.length === 4){
-    return(
+  if (pathArray.length === 4) {
+    return (
       <div className="flex text-gray-200 bg-slate-600 h-14 justify-between px-4">
-        <h1>
-        FreeFund
-        </h1>
+        <h1>FreeFund</h1>
         <h1>Login</h1>
       </div>
-    )
+    );
   }
-
 
   return (
     <>
@@ -60,8 +57,8 @@ export default function Navbar() {
             ${
               pathArray.length == 2 &&
               (scrollY
-                ? "fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full"
-                : "  absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md")
+                ? "fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full z-50"
+                : "absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50")
             }
            
           ${ReturnCssToNavbar(pathArray.length)}                   
