@@ -10,8 +10,11 @@ function ReturnCssToNavbar(pathArray: Number, scrollY?: Number) {
   switch (pathArray) {
     case 3:
       return "h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full";
+      break;
     case 4:
       return "bg-blue-700";
+      break
+    default: return 'h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full'
   }
 }
 
@@ -64,7 +67,7 @@ export default function Navbar() {
                 : `absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50 `)
             }
            
-          ${ReturnCssToNavbar(pathArray.length)}                   
+          ${pathArray.length>2 && ReturnCssToNavbar(pathArray.length)}                   
             
           bg-white
           transition-width duration-500 ease-in-out

@@ -77,8 +77,6 @@ export default function PayNow(){
             </div>
 
             </div>
-
-
           
             <div className="flex space-x-4 mt-4">
               <button className="border-2 border-[#20b36f] rounded-md px-4 w-[30%] py-1">see all</button>
