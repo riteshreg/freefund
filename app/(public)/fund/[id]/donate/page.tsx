@@ -1,26 +1,24 @@
-'use client'
+"use client";
 import Card from "@/libsComponents/Card";
 import HorizontalLine from "@/libsComponents/HorizontalLine";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { useState } from "react";
+const khatliImage = "/../../../../../public/images/khalti.jpg";
 
 const link =
   "https://images.gofundme.com/yDMz0IUbo4m8NxEB3QBFY5OZepQ=/640x480/https://d2g8igdw686xgo.cloudfront.net/72546271_1682534329737438_r.jpeg";
 
-const khaltiLogoImg = 'https://dao578ztqooau.cloudfront.net/static/img/logo1.png'
-const esewaLogoImg = "https://upload.wikimedia.org/wikipedia/commons/f/ff/Esewa_logo.webp"
-
 export default function Donate() {
-  const [donationAmmount, setDonationAmmount] = useState('')
+  const [donationAmmount, setDonationAmmount] = useState("");
 
-  function handleDonationInputFieldChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setDonationAmmount(event.target.value.replace(/[^0-9]/g, ''))
-
+  function handleDonationInputFieldChange(
+    event: React.ChangeEvent<HTMLInputElement>
+  ) {
+    setDonationAmmount(event.target.value.replace(/[^0-9]/g, ""));
   }
 
   console.log(donationAmmount);
-
 
   return (
     <div>
@@ -74,38 +72,62 @@ export default function Donate() {
               </div>
             </div>
 
-
             <div className="mt-5">
               <h4 className="font-semibold">Payment method</h4>
-              <div className="border py-3 border-gray-500 rounded-lg">
+              <div className="border py-1 border-gray-500 rounded-lg">
+                <ul className=" text-sm font-medium text-gray-900   ">
+                  <li className="w-full">
+                    <div className="w-full flex items-center pl-3">
+                      <label className="flex  items-center space-x-5 w-full py-1 ml-2 text-sm font-medium text-gray-900 ">
+                        <input
+                          id="list-radio-license"
+                          type="radio"
+                          value=""
+                          name="list-radio"
+                          className="w-4 h-4 text-blue-600 bg-gray-100  focus:ring-blue-500 dark:focus:ring-blue-600   focus:ring-2 dark:bg-gray-600 "
+                        />
+                        <Image
+                          src={"/images/khalti.png"}
+                          height={120}
+                          width={120}
+                          alt="khalti"
+                        />
+                        <h4 className="text-lg text-gray-700">Khalti</h4>
+                      </label>
+                    </div>
+                    <HorizontalLine />
+                  </li>
 
-              <ul className="grid w-full gap-6 md:grid-cols-2">
-    <li>
-        <input type="radio" id="hosting-small" name="hosting" value="hosting-small" className="hidden peer" required/>
-        <label  className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
-            <div className="block">
-                <div className="w-full text-lg font-semibold">0-50 MB</div>
-                <div className="w-full">Good for small websites</div>
-            </div>
-            <svg aria-hidden="true" className="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </label>
-    </li>
-    <li>
-        <input type="radio" id="hosting-big" name="hosting" value="hosting-big" className="hidden peer"/>
-        <label className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div className="block">
-                <div className="w-full text-lg font-semibold">500-1000 MB</div>
-                <div className="w-full">Good for large websites</div>
-            </div>
-            <svg aria-hidden="true" className="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </label>
-    </li>
-</ul>
-
+                  <li className="w-full">
+                    <div className="w-full flex items-center pl-3">
+                      <label className="flex  items-center space-x-5 w-full py-1 ml-2 text-sm font-medium text-gray-900 ">
+                        <input
+                          id="list-radio-license"
+                          type="radio"
+                          value=""
+                          name="list-radio"
+                          className="w-4 h-4 text-blue-600 bg-gray-100  focus:ring-blue-500 dark:focus:ring-blue-600   focus:ring-2 dark:bg-gray-600 "
+                        />
+                        <Image
+                          src={"/images/esewa.png"}
+                          height={120}
+                          width={120}
+                          alt="esewa"
+                        />
+                        <h4 className="text-lg text-gray-700">Esewa</h4>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
-
-
+            <div className="flex mt-10">
+              <button className="w-full py-4 text-white text-lg  bg-black rounded-xl">
+                <div className="flex justify-center mr-4  items-center">
+                  <h4>Pay</h4>
+                </div>
+              </button>
+            </div>
           </div>
         </Card>
       </div>
