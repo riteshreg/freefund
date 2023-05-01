@@ -12,7 +12,7 @@ export default function Category() {
     ward: "",
   });
 
-  const [selectFundFor, setSelectFundFor] = useState(0);
+  const [selectFundFor, setSelectFundFor] = useState(1);
 
   const handleClick = (id:number) => {
     setSelectFundFor(id);
@@ -48,7 +48,7 @@ export default function Category() {
       
                 <ul className="grid w-full gap-6 ">
 
-                  <li onClick={()=>handleClick(1)}>
+                  <li >
                     <input
                       type="radio"
                       id="hosting-small"
@@ -57,7 +57,7 @@ export default function Category() {
                       className="hidden peer"
                       required
                     />
-                    <label className={` ${selectFundFor  === 1 && 'bg-[#d2f0e3] border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1 text-gray-500 bg-white border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-[#d2f0e3] `}>
+                    <button onClick={()=>handleClick(1)} className={` ${selectFundFor  == 1 && 'bg-green-300 border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1 text-gray-500 border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-green-300 `}>
                       <div className="block peer-checked:bg-red-600">
                         <div className="w-full peer-checked:bg-red-600 text-lg font-semibold">
                          Yourself
@@ -65,10 +65,10 @@ export default function Category() {
                         <div className="w-full text-sm text-slate-700">Funds are delivered to your bank account for your own use</div>
                       </div>
                         <Image  src={'/images/yourself.png'}  height={100} width={100} alt="yourself"/>
-                    </label>
+                    </button>
                   </li>
                  
-                  <li onClick={()=>handleClick(2)}>
+                  <li >
                     <input
                       type="radio"
                       id="hosting-small"
@@ -77,7 +77,7 @@ export default function Category() {
                       className="hidden peer"
                       required
                     />
-                    <label className={` ${selectFundFor === 2 && 'bg-[#d2f0e3]  border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1  text-gray-500 bg-white border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-[#d2f0e3] `}>
+                    <div onClick={()=>handleClick(2)} className={` ${selectFundFor == 2 ? ('bg-green-300  border-green-600') : '' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1  text-gray-500 border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-green-300 `}>
                       <div className="block peer-checked:bg-red-600">
                         <div className="w-full peer-checked:bg-red-600 text-lg font-semibold">
                         Someone else
@@ -86,7 +86,7 @@ export default function Category() {
                       </div>
                       <Image  src={'/images/someone.png'}  height={100} width={100} alt="yourself"/>
 
-                    </label>
+                    </div>
                   </li>
 
 
