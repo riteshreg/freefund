@@ -24,6 +24,8 @@ export default function Navbar() {
 
   const [scrollY, setScrollY] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [navisExtended, setisnavExtended] = useState(false);
+  const handleSearch = () => {};
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,21 +60,22 @@ export default function Navbar() {
             ${
               pathArray.length == 2 &&
               (scrollY
-                ? `fixed top-0 h-28 overflow-hidden flex items-center justify-evenly px-4 shadow-md  z-50 ${
+                ? `fixed top-0  overflow-hidden flex items-center justify-evenly px-4 shadow-md  z-50 ${
                     isExpanded ? " w-full" : ""
                   }`
-                : `absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50 `)
+                : `absolute left-32 right-32  rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50 `)
             }
            
           ${ReturnCssToNavbar(pathArray.length)}                   
             
           bg-white
-          transition-width duration-500 ease-in-out
+          transition-width duration-1000 ease-linear
+          h-24
           `}
         >
           {" "}
-          <div className=" flex gap-3 text-xl">
-            <div className="flex gap-2 hover_box">
+          <div className=" flex   gap-3 text-xl">
+            <div className="flex gap-2 hover_box " onClick={handleSearch}>
               <div className="">
                 <MagnifyingGlassIcon className="w-7" />
               </div>
@@ -88,7 +91,7 @@ export default function Navbar() {
             <div className="outline outline-blue rounded-full  outline-2 px-6 py-1 hover:bg-blue">
               Get Started
             </div>
-          </div>
+          </div>{" "}
         </div>
       </header>
     </>
