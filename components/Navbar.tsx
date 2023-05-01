@@ -26,17 +26,19 @@ export default function Navbar() {
   console.log(pathArray, pathArray.length);
 
   const [scrollY, setScrollY] = useState(0);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      setIsExpanded(scrollY > 0);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrollY]);
 
   async function handleLogout() {
     const { error } = await supabase.auth.signOut();
@@ -55,21 +57,21 @@ export default function Navbar() {
     <>
       <header className="">
         <div
-          className={
-            `
+          className={`
             ${
               pathArray.length == 2 &&
               (scrollY
-                ? "fixed  h-28 overflow-hidden flex items-center justify-between px-4 shadow-md min-w-full z-50"
-                : "absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50")
+                ? `fixed top-0 h-28 overflow-hidden flex items-center justify-evenly px-4 shadow-md  z-50 ${
+                    isExpanded ? " w-full" : ""
+                  }`
+                : `absolute left-32 right-32 h-24 rounded-full my-8 overflow-hidden flex items-center justify-between px-4 shadow-md z-50 `)
             }
            
           ${pathArray.length>2 && ReturnCssToNavbar(pathArray.length)}                   
             
           bg-white
-          `
-            //
-          }
+          transition-width duration-500 ease-in-out
+          `}
         >
           {" "}
           <div className=" flex gap-3 text-xl">
