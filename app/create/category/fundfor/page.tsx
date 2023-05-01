@@ -57,7 +57,7 @@ export default function Category() {
                       className="hidden peer"
                       required
                     />
-                    <label className={` ${selectFundFor  === 1 && 'bg-[#e6f6ef] border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1 text-gray-500 bg-white border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-[#e6f6ef] `}>
+                    <label className={` ${selectFundFor  === 1 && 'bg-[#d2f0e3] border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1 text-gray-500 bg-white border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-[#d2f0e3] `}>
                       <div className="block peer-checked:bg-red-600">
                         <div className="w-full peer-checked:bg-red-600 text-lg font-semibold">
                          Yourself
@@ -77,7 +77,7 @@ export default function Category() {
                       className="hidden peer"
                       required
                     />
-                    <label className={` ${selectFundFor === 2 && 'bg-[#e6f6ef]  border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1  text-gray-500 bg-white border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-[#e6f6ef] `}>
+                    <label className={` ${selectFundFor === 2 && 'bg-[#d2f0e3]  border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1  text-gray-500 bg-white border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-[#d2f0e3] `}>
                       <div className="block peer-checked:bg-red-600">
                         <div className="w-full peer-checked:bg-red-600 text-lg font-semibold">
                         Someone else
