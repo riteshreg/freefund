@@ -23,7 +23,7 @@ export default function Navbar() {
   const currentPath = usePathname();
 
   const pathArray = currentPath.split("/");
-  console.log(pathArray, pathArray.length);
+  console.log("patharray", "length", pathArray, pathArray.length);
 
   const [scrollY, setScrollY] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -45,7 +45,30 @@ export default function Navbar() {
   async function handleLogout() {
     const { error } = await supabase.auth.signOut();
   }
-
+  if (pathArray[1] === "discover") {
+    return (
+      <div className="  overflow-hidden flex items-center justify-evenly px-4 shadow-md  z-50 min-w-full h-28">
+        <div className=" flex   gap-3 text-xl">
+          <div className="flex gap-2 hover_box " onClick={handleSearch}>
+            <div className="">
+              <MagnifyingGlassIcon className="w-7" />
+            </div>
+            <div>Search</div>
+          </div>
+          <div className="hover_box">For Individuals</div>
+          <div className="hover_box">For Charity</div>
+        </div>
+        <div className="text-5xl text-bold">Free-Fund</div>
+        <div className="flex gap-3 text-xl items-center">
+          <div className="hover_box">How It Works</div>
+          <div className="hover_box">Sign In</div>
+          <button className="outline outline-green-700 rounded-md  outline-2 px-6 py-1 hover:bg-green-900 hover:text-white">
+            Start a Go Fund Me
+          </button>
+        </div>{" "}
+      </div>
+    );
+  }
   if (pathArray.length === 4) {
     return (
       <div className="flex text-gray-200 bg-slate-600 h-14 justify-between px-4">
@@ -72,7 +95,7 @@ export default function Navbar() {
           ${pathArray.length>2 && ReturnCssToNavbar(pathArray.length)}                   
             
           bg-white
-          transition-width duration-1000 ease-linear
+          transition-width duration-500 ease-in-out
           h-24
           `}
         >
