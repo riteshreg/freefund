@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AdminContextProviders>
-          <div className="lg:flex">
+          <div className="lg:flex ">
             <div className="lg:w-fit w-full">
               <AdminSidebar />
             </div>
