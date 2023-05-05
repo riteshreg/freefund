@@ -1,15 +1,29 @@
-'use client'
+"use client"
+
 import { createClient } from "@/SupabaseComponents/SupabaseBrowserClient";
 import Card from "@/libsComponents/Card";
+import {useEffect} from 'react'
 
 export default function Create(){
 
     const supabase = createClient()
 
+    useEffect(()=>{
+      const data = supabase.auth.getSession().then((response)=>{
+        
+        console.log(response);
+      })
+      
+    },[])
+
    async function handleGoogleLogin(){        
         const {data, error} = await supabase.auth.signInWithOAuth({
-            provider:'google'
-        })        
+            provider:'google',
+            options: {
+              redirectTo: 'https://freefundweb.vercel.app/fund/234'
+            }
+        },
+        )        
     }
 
 
