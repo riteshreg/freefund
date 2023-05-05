@@ -20,7 +20,7 @@ export default function Create(){
         const {data, error} = await supabase.auth.signInWithOAuth({
             provider:'google',
             options: {
-              redirectTo: 'https://freefundweb.vercel.app/fund/234'
+              redirectTo: 'https://freefundweb.vercel.app/create/category'
             }
         },
         )        
