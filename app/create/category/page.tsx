@@ -2,16 +2,20 @@
 
 import Card from "@/libsComponents/Card";
 import { useState } from "react";
+import { CreateDonationChangeHandler } from "@/redux/CreateDonationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import Link from "next/link";
 
 export default function Category() {
-  const [formData, setFormData] = useState({
-    province: "",
-    district: "",
-    municipality: "",
-    ward: "",
-  });
 
-  function handleFormChange() {}
+  const dispatch = useDispatch()
+
+  const {province, district, municipality, ward} = useSelector((state:RootState)=> state.createDonation)
+
+  function handleFormChange(event:React.ChangeEvent<HTMLInputElement>){
+    dispatch(CreateDonationChangeHandler({key:event.target.name, value:event.target.value}))
+  }
 
   return (
      <div className="flex relative  overflow-hidden bg-[#fbf8f6] ">
@@ -39,6 +43,7 @@ export default function Category() {
                 <input
                   type="text"
                   name="province"
+                  value={province}
                   onChange={handleFormChange}
                   className="w-full py-2  px-1  ouline-green-400 border border-slate-600 rounded-lg"
                 />
@@ -47,7 +52,8 @@ export default function Category() {
                 <label>District</label>
                 <input
                   type="text"
-                  name="province"
+                  name="district"
+                  value={district}
                   onChange={handleFormChange}
                   className="w-full py-2  px-1  ouline-green-400 border border-slate-600 rounded-lg"
                 />
@@ -58,7 +64,8 @@ export default function Category() {
                 <label>Municipality</label>
                 <input
                   type="text"
-                  name="province"
+                  name="municipality"
+                  value={municipality}
                   onChange={handleFormChange}
                   className="w-full py-2  px-1  ouline-green-400 border border-slate-600 rounded-lg"
                 />
@@ -67,7 +74,8 @@ export default function Category() {
                 <label>Ward</label>
                 <input
                   type="text"
-                  name="province"
+                  name="ward"
+                  value={ward}
                   onChange={handleFormChange}
                   className="w-full py-2  px-1  ouline-green-400 border border-slate-600 rounded-lg"
                 />
@@ -84,9 +92,9 @@ export default function Category() {
       <div className="sticky bottom-0 overflow-hidden w-full ">
           <Card>
               <div className="flex justify-end ">
-                  <button className="bg-[#02a95c] rounded-md text-white px-8 py-3">
+                  <Link href={'/create/category/fundfor'} className="bg-[#02a95c] rounded-md text-white px-8 py-3">
                       Continue
-                  </button>
+                  </Link>
               </div>
           </Card>
       </div>

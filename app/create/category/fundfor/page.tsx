@@ -3,22 +3,37 @@
 import Card from "@/libsComponents/Card";
 import Image from "next/image";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { CreateDonationChangeHandler } from "@/redux/CreateDonationSlice";
+import { RootState } from "@/redux/store";
+import { useRouter } from "next/navigation";
+
+interface HandleClickArgs{
+  id:number;
+  name:string;
+
+}
 
 export default function Category() {
-  const [formData, setFormData] = useState({
-    province: "",
-    district: "",
-    municipality: "",
-    ward: "",
-  });
 
-  const [selectFundFor, setSelectFundFor] = useState(1);
+  const [selectFundFor, setSelectFundFor] = useState(0);
 
-  const handleClick = (id:number) => {
-    setSelectFundFor(id);
+  
+  const dispatch = useDispatch()
+  const router = useRouter()
+  
+  const handleClick = ({id, name}:HandleClickArgs) => {
+    setSelectFundFor(id)
+    dispatch(CreateDonationChangeHandler({key:'fundFor', value:name}))
   };
 
-  function handleFormChange() {}
+  function handleNextPage() {
+    if(selectFundFor == 0){
+      throw 'Who are you fundraising for?'
+    }
+
+    router.push('/create/category/fundfor/goal')
+  }
 
   return (
     <div className="flex relative  overflow-hidden bg-[#fbf8f6] ">
@@ -57,7 +72,7 @@ export default function Category() {
                       className="hidden peer"
                       required
                     />
-                    <button onClick={()=>handleClick(1)} className={` ${selectFundFor  == 1 && 'bg-green-300 border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1 text-gray-500 border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-green-300 `}>
+                    <button onClick={()=>handleClick({id:1, name:'Yourself'})} className={` ${selectFundFor  == 1 && 'bg-green-300 border-green-600' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1 text-gray-500 border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-green-300 `}>
                       <div className="block peer-checked:bg-red-600">
                         <div className="w-full peer-checked:bg-red-600 text-lg font-semibold">
                          Yourself
@@ -77,7 +92,7 @@ export default function Category() {
                       className="hidden peer"
                       required
                     />
-                    <div onClick={()=>handleClick(2)} className={` ${selectFundFor == 2 ? ('bg-green-300  border-green-600') : '' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1  text-gray-500 border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-green-300 `}>
+                    <div onClick={()=>handleClick({id:2, name:'Someone else'})} className={` ${selectFundFor == 2 ? ('bg-green-300  border-green-600') : '' } border-gray-400 inline-flex items-center justify-between w-full  px-2 py-1  text-gray-500 border rounded-lg cursor-pointer dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600  hover:bg-green-300 `}>
                       <div className="block peer-checked:bg-red-600">
                         <div className="w-full peer-checked:bg-red-600 text-lg font-semibold">
                         Someone else
@@ -100,7 +115,7 @@ export default function Category() {
         <div className="sticky bottom-0 overflow-hidden w-full ">
           <Card>
             <div className="flex justify-end ">
-              <button className="bg-[#02a95c] rounded-md text-white px-8 py-3">
+              <button onClick={handleNextPage} className="bg-[#02a95c] rounded-md text-white px-8 py-3">
                 Continue
               </button>
             </div>

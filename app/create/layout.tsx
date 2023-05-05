@@ -2,6 +2,7 @@
 import Card from "@/libsComponents/Card";
 import "../globals.css";
 import React, { createContext, useContext, useState } from "react";
+import { ReduxProvider } from "@/libs/ReduxProvider";
 
 export default function RootLayout({
   children,
@@ -10,7 +11,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ReduxProvider>
+        {children}
+        </ReduxProvider>
+        </body>
     </html>
   );
 }

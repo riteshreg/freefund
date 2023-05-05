@@ -1,21 +1,37 @@
 "use client";
 import Card from "@/libsComponents/Card";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CreateDonationChangeHandler } from "@/redux/CreateDonationSlice";
+import { RootState } from "@/redux/store";
+import { useRouter } from "next/navigation";
 
 export default function Goal() {
-  const [startingGoal, setStartingGoal] = useState<string>("0");
+
+  const dispatch = useDispatch();
+  const router = useRouter()
+
+  const {goal}  = useSelector((state:RootState)=>state.createDonation)
 
   function handleDonationInputFieldChange(
     event: React.ChangeEvent<HTMLInputElement>
   ) {
+    
     const inputValue = event.target.value;
+
     // Remove all commas from the input value
     const sanitizedValue = inputValue.replace(/,/g, "");
     // Parse the sanitized value as a number
     const parsedValue = sanitizedValue ? parseInt(sanitizedValue, 10) : 0;
-    // Format the number with commas in the Indian style
-    const formattedValue = parsedValue.toLocaleString("en-IN");
-    setStartingGoal(formattedValue);
+
+    dispatch(
+      CreateDonationChangeHandler({
+        key: "goal",
+        value: parsedValue.toString(),
+      })
+    );
+
+    // Format the number with commas in the Indian style    
   }
 
   return (
@@ -25,7 +41,7 @@ export default function Goal() {
           How much would you like to raise?
         </h1>
         <p className="text-sm text-gray-700 max-w-[80%] ">
-         {`It's completely expected to need funds beyond your starting goal. You
+          {`It's completely expected to need funds beyond your starting goal. You
           can always change your goal as you go.`}
         </p>
       </div>
@@ -45,7 +61,7 @@ export default function Goal() {
                     <input
                       type="text"
                       maxLength={10}
-                      value={startingGoal}
+                      value={parseInt(goal).toLocaleString('en-US')}
                       onChange={handleDonationInputFieldChange}
                       className="w-full py-2  font-semibold text-gray-800 text-xl px-1   border-none outline-none"
                     />
@@ -53,13 +69,19 @@ export default function Goal() {
                 </label>
               </div>
               <div>
-                <p className="text-sm text-gray-500 font-semibold mt-5">Keep in mind that transaction fees, including credit and debit charges, are deducted from each donation.</p>
+                <p className="text-sm text-gray-500 font-semibold mt-5">
+                  Keep in mind that transaction fees, including credit and debit
+                  charges, are deducted from each donation.
+                </p>
               </div>
               <div className="mt-5 bg-[#e7f0f7] rounded-xl shadow px-8 py-6">
-                <p  className="text-sm text-gray-700">To receive money raised, please make sure the person withdrawing has:</p>
+                <p className="text-sm text-gray-700">
+                  To receive money raised, please make sure the person
+                  withdrawing has:
+                </p>
                 <ul className="list-disc px-5 text-sm text-gray-700 space-y-1 mt-3">
-                    <li>A Ward office certificate</li>
-                    <li>A bank account</li>
+                  <li>A Ward office certificate</li>
+                  <li>A bank account</li>
                 </ul>
               </div>
             </div>
@@ -68,7 +90,12 @@ export default function Goal() {
         <div className="sticky bottom-0 overflow-hidden w-full ">
           <Card>
             <div className="flex justify-end ">
-              <button className="bg-[#02a95c] rounded-md text-white px-8 py-3">
+              <button onClick={()=>{
+                  if(goal == '0'){
+                      throw 'what is your stating goal'
+                  }
+                  router.push('/create/category/fundfor/goal/signup')
+              }} className="bg-[#02a95c] rounded-md text-white px-8 py-3">
                 Continue
               </button>
             </div>
