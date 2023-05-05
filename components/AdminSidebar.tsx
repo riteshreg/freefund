@@ -12,7 +12,7 @@ export default function AdminSidebar() {
       {isOpen && (
         <>
           <div className=" lg:h-screen h-full lg:w-72 w-full  lg:shadow-lg text-white  ">
-            <div className="flex flex-col w-full lg:mx-3 gap-6 lg:py-8 text-blue-800 md:justify-center md:items-center md:my-auto ">
+            <div className="flex flex-col  lg:mx-3 gap-6 lg:py-8 text-blue-800   md:my-auto ">
               <div className="flex gap-2">
                 <h1 className="font-bold  text-5xl">
                   <Link href="/admin">Dashboard</Link>{" "}
@@ -29,12 +29,6 @@ export default function AdminSidebar() {
                 </div>
               </Link>
             </div>
-            <footer className="absolute bottom-7 p-3 text-white bg-blue-800  w-72 h-12">
-              <span className="text-sm sm:text-center">
-                © 2023 <a href="https://flowbite.com/">Free-Fund</a>. All Rights
-                Reserved.
-              </span>
-            </footer>
           </div>
         </>
       )}
