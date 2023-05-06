@@ -14,7 +14,7 @@ const initialState:InitialCreateState = {
     municipality:"",
     ward:"",
     fundFor:"",
-    goal:"",
+    goal:"0",
     firstName:"",
     lastName:"",
     password:"",
