@@ -1,5 +1,5 @@
 interface InitialCreateState{
-    province:tring;
+    province:string;
     district:string;
     municipality:string;
     ward:string;
