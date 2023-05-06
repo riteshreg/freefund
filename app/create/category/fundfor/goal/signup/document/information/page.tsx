@@ -27,36 +27,38 @@ export default function Information() {
     <>
       <div className="relative">
         <div>
-          <div className="flex overflow-hidden bg-[#fbf8f6]">
-            <div className="w-[34%]  space-y-5 h-screen flex flex-col justify-center items-center">
-              <h1 className="text-semibold text-3xl text-gray-700 min-w-[80%]">
+          <div className=" overflow-hidden bg-[#fbf8f6]">
+            <div className="flex h-[6rem] flex-col justify-center items-center">
+              <h1 className="text-semibold text-3xl text-gray-700">
                 Have A Look At Your Information
               </h1>
             </div>
-            <div className=" overflow-y-scroll flex-grow h-screen  bg-[#ffffff] rounded-l-[6rem] shadow border-gray-100 border-2">
+            <div className=" overflow-y-scroll flex-grow h-screen  bg-[#ffffff]  shadow border-gray-100 border-2">
               <div className="mt-2 w-[85%] ml-10 ">
-                <div className="flex justify-end">
-                  <button>Sign In</button>
-                </div>
                 <div className="mt-20 ">
-                  <div className="flex flex-col space-y-5 items-start">
+                  <div className="flex flex-col gap-10 items-start">
                     <div className="flex flex-col gap-5">
-                      <span className="text-3xl font-semibold">
-                        Donated Amount
+                      <span className="text-3xl font-semibold flex gap-6 items-center">
+                        Your Goal{" "}
+                        <button
+                          onClick={() =>
+                            router.push("/create/category/fundfor/goal")
+                          }
+                        >
+                          <PencilSquareIcon className="w-10 h-10 text-blue-800" />
+                        </button>
                       </span>
                       <div className="w-30 h-40 font-light text-4xl bg-[#fbf8f6] rounded-lg px-4 py-2 shadow-md flex items-center justify-center">
-                        {goal}
+                        Rs{goal}
                       </div>
-                      <button
-                        onClick={() =>
-                          router.push("/create/category/fundfor/goal")
-                        }
-                      >
-                        <PencilSquareIcon className="w-10 h-10 text-blue-800" />
-                      </button>
                     </div>
                     <div className="flex flex-col gap-6">
-                      <div className="text-4xl font-semibold ">Address</div>
+                      <div className="text-4xl font-semibold flex gap-6 items-center">
+                        Address{" "}
+                        <button onClick={() => router.push("/create/category")}>
+                          <PencilSquareIcon className="w-10 h-10 text-blue-800" />
+                        </button>
+                      </div>
                       <div className="grid lg:grid-cols-8 md:grid-cols-4 sm:grid-cols-2  gap-3 text-2xl font-light">
                         Province:{" "}
                         <span className="font-semibold">{province}</span>
@@ -66,15 +68,21 @@ export default function Information() {
                         <span className="font-semibold"> {municipality}</span>
                         Ward:<span className="font-semibold">{ward} </span>
                       </div>
-                      <button onClick={() => router.push("/create/category")}>
-                        <PencilSquareIcon className="w-10 h-10 text-blue-800" />
-                      </button>
                     </div>
                     <div>
                       {" "}
                       <div className="grid  gap-6 font-light">
-                        <div className="text-4xl font-semibold ">
-                          Personal Info
+                        <div className="text-4xl font-semibold flex gap-6 items-center">
+                          Personal Info{" "}
+                          <button
+                            onClick={() =>
+                              router.push(
+                                "/create/category/fundfor/goal/signup"
+                              )
+                            }
+                          >
+                            <PencilSquareIcon className="w-10 h-10 text-blue-800" />
+                          </button>
                         </div>
                         <div className="flex flex-col lg:flex-row gap-3 text-2xl items-center ">
                           <div className="w-40  h-40  px-4 py-2">
@@ -83,7 +91,7 @@ export default function Information() {
                               src={profilePicture}
                               height={1000}
                               width={1000}
-                              className=" rounded-[50%]"
+                              className=" rounded-[50%] "
                             />
                           </div>
                           Name:
@@ -94,25 +102,18 @@ export default function Information() {
                           Phone:
                           <span className="font-semibold">{mobileNumber}</span>
                         </div>
-                        <button
-                          onClick={() =>
-                            router.push("/create/category/fundfor/goal/signup")
-                          }
-                        >
-                          <PencilSquareIcon className="w-10 h-10 text-blue-800" />
-                        </button>
                       </div>
                     </div>
                     <div className=" flex flex-col   gap-10 p-5">
                       <div className="flex flex-col gap-2 items-center font-semibold ">
                         <div className="text-2xl">Ward Certificate</div>
-                        <div className=" px-4 py-2">
+                        <div className=" px-4 py-2 relative">
                           <Image
                             alt="wardCertificate"
                             src={wardCertificate}
                             height={500}
                             width={500}
-                            className="rounded-lg"
+                            className="rounded-lg "
                           />
                           <button
                             onClick={() =>
@@ -120,7 +121,7 @@ export default function Information() {
                                 "/create/category/fundfor/goal/signup/document"
                               )
                             }
-                            className="p-5"
+                            className="p-5 absolute z-20 left-4 top-5"
                           >
                             <PencilSquareIcon className="w-10 h-10 text-blue-800" />
                           </button>
@@ -128,7 +129,7 @@ export default function Information() {
                       </div>
                       <div className="flex flex-col gap-2  items-center font-semibold ">
                         <div className="text-2xl">Bank Cheque Receipt</div>
-                        <div className=" px-4 py-2">
+                        <div className=" px-4 py-2 relative">
                           <Image
                             alt="bankcheque"
                             src={bankcheque}
@@ -142,7 +143,7 @@ export default function Information() {
                                 "/create/category/fundfor/goal/signup/document"
                               )
                             }
-                            className="p-5"
+                            className="p-5 absolute z-20 left-4 top-5"
                           >
                             <PencilSquareIcon className="w-10 h-10 text-blue-800" />
                           </button>
@@ -150,7 +151,7 @@ export default function Information() {
                       </div>
                       <div className="flex flex-col gap-2 items-center font-semibold ">
                         <div className="text-2xl">Thumbnail Picture</div>
-                        <div className=" px-4 py-2">
+                        <div className=" px-4 py-2 relative">
                           <Image
                             alt="thumbnailPicture"
                             src={thumbnailPicture}
@@ -164,7 +165,7 @@ export default function Information() {
                                 "/create/category/fundfor/goal/signup/document"
                               )
                             }
-                            className="p-5"
+                            className="p-5 absolute z-20 left-4 top-5"
                           >
                             <PencilSquareIcon className="w-10 h-10 text-blue-800" />
                           </button>
