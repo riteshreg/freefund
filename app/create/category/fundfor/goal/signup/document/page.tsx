@@ -51,14 +51,20 @@ export default function Document() {
   async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
 
     const file = event.target.files?.[0];
+    console.log(file);
+    
+    const bucketName = GetBucketNameForCreateFund(event.target.name)
 
     if (file) {
 
       const url = URL.createObjectURL(file);
       const fileName = event.target.name + file.name + new Date().getTime();
+      
+      console.log("2",url, fileName);
+      
 
-      const {data, error} = await supabase.storage
-        .from(GetBucketNameForCreateFund(event.target.name))
+            const {data, error} = await supabase.storage
+        .from(bucketName)
         .upload(fileName, file)  as ApiResponse<SupabaseFetch>
 
 
@@ -82,7 +88,7 @@ export default function Document() {
           CreateDonationChangeHandler({
             key: event.target.name,
             value:
-              "https://idrkpjmuvqzcfkyvqrue.supabase.co/storage/v1/object/public/fund_request_bucket/" +
+              `https://idrkpjmuvqzcfkyvqrue.supabase.co/storage/v1/object/public/${bucketName}/` +
               data?.path
             })
         );

@@ -5,7 +5,7 @@ const nextConfig = {
         
   },
   images:{
-    domains:['images.gofundme.com','dao578ztqooau.cloudfront.net','upload.wikimedia.org']
+    domains:['images.gofundme.com','dao578ztqooau.cloudfront.net','upload.wikimedia.org','idrkpjmuvqzcfkyvqrue.supabase.co']
   }
 }
 

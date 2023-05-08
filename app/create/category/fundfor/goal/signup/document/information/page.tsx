@@ -4,8 +4,29 @@ import { RootState } from "@/redux/store";
 import Image from "next/image";
 import { PencilSquareIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/SupabaseComponents/SupabaseBrowserClient";
+import { v4 as uuidv4 } from 'uuid';
+import { useEffect, useState } from "react";
+
+
 export default function Information() {
+
   const router = useRouter();
+  const supabase = createClient()
+
+  const [userId, setUserId] = useState('')
+
+  useEffect(()=>{
+
+    fetchUser()
+   
+  },[])
+
+  async function fetchUser(){
+    const userId =  (await supabase.auth.getUser()).data.user?.id;
+      setUserId(userId? userId: '')
+  }
+  
   const {
     province,
     district,
@@ -21,19 +42,46 @@ export default function Information() {
     goal,
   } = useSelector((state: RootState) => state.createDonation);
 
-  console.log(province);
+
+  console.log(thumbnailPicture);
+  
+
+ async function handleRequestReview(){
+
+  
+  supabase.from("fund_request_profile").insert({
+     id:userId,
+      firstName,
+      lastName,
+      province,
+      district,
+      municipality, 
+      mobileNumber,
+    }).then((response)=>{
+     if(response.status == 201){
+        supabase.from('fund_request_list').insert({
+          list_user_profile_id:userId,
+          profilePicture,
+          wardCertificate,
+          bankcheque,
+          thumbnailPicture,
+          goal,
+        }).then((response)=>{
+          console.log(response)
+        })      
+     }     
+    })
+  }
 
   return (
     <>
-      <div className="relative">
-        <div>
-          <div className=" overflow-hidden bg-[#fbf8f6]">
+      <div className="relative pb-28">
+        <div className="">
             <div className="flex h-[6rem] flex-col justify-center items-center">
               <h1 className="text-semibold text-3xl text-gray-700">
                 Have A Look At Your Information
               </h1>
             </div>
-            <div className=" overflow-y-scroll flex-grow h-screen  bg-[#ffffff]  shadow border-gray-100 border-2">
               <div className="mt-2 w-[85%] ml-10 ">
                 <div className="mt-20 ">
                   <div className="flex flex-col gap-10 items-start">
@@ -85,14 +133,14 @@ export default function Information() {
                           </button>
                         </div>
                         <div className="flex flex-col lg:flex-row gap-3 text-2xl items-center ">
-                          <div className="w-40  h-40  px-4 py-2">
-                            <Image
+                          <div className=" min-h-[3rem] w-40  h-40  px-4 py-2">
+                           {profilePicture && <Image
                               alt="profile-picture"
                               src={profilePicture}
                               height={1000}
                               width={1000}
                               className=" rounded-[50%] "
-                            />
+                            />}
                           </div>
                           Name:
                           <span className="font-semibold">
@@ -107,14 +155,14 @@ export default function Information() {
                     <div className=" flex flex-col   gap-10 p-5">
                       <div className="flex flex-col gap-2 items-center font-semibold ">
                         <div className="text-2xl">Ward Certificate</div>
-                        <div className=" px-4 py-2 relative">
-                          <Image
+                        <div className="min-h-[3rem] px-4 py-2 relative">
+                         { wardCertificate && <Image
                             alt="wardCertificate"
                             src={wardCertificate}
                             height={500}
                             width={500}
                             className="rounded-lg "
-                          />
+                          />}
                           <button
                             onClick={() =>
                               router.push(
@@ -129,14 +177,14 @@ export default function Information() {
                       </div>
                       <div className="flex flex-col gap-2  items-center font-semibold ">
                         <div className="text-2xl">Bank Cheque Receipt</div>
-                        <div className=" px-4 py-2 relative">
-                          <Image
+                        <div className="min-h-[3rem] px-4 py-2 relative">
+                         {bankcheque && <Image
                             alt="bankcheque"
                             src={bankcheque}
                             height={500}
                             width={500}
                             className="rounded-lg"
-                          />
+                          />}
                           <button
                             onClick={() =>
                               router.push(
@@ -151,14 +199,14 @@ export default function Information() {
                       </div>
                       <div className="flex flex-col gap-2 items-center font-semibold ">
                         <div className="text-2xl">Thumbnail Picture</div>
-                        <div className=" px-4 py-2 relative">
-                          <Image
+                        <div className=" min-h-[3rem] px-4 py-2 relative">
+                         {thumbnailPicture && <Image
                             alt="thumbnailPicture"
                             src={thumbnailPicture}
                             height={500}
                             width={500}
                             className="rounded-lg"
-                          />
+                          />}
                           <button
                             onClick={() =>
                               router.push(
@@ -172,12 +220,13 @@ export default function Information() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
+          <div className="max-w-lg ml-10 mt-20">
+            <button onClick={handleRequestReview} className="w-full bg-blue-400 px-2 py-3 rounded-md text-lg font-semibold">Request Review</button>
+          </div>
       </div>
     </>
   );
