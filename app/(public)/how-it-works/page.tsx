@@ -13,7 +13,7 @@ export default function WorkingPage() {
         <div className="h-[20rem] bg-[#fbf8f6] min-w-full ">h</div>
       </div>
 
-      <div className="grid lg:grid-cols-3 md:gird-cols-2 grid-col-1 gap-6 py-10 px-6  my-20 place-content-center">
+      <div className="grid lg:grid-cols-3 md:gird-cols-2 sm:grid-cols-1 gap-6 py-10 px-6  my-20 place-content-center">
         <div>
           <div className="flex gap-8 justify-center">
             <div>
