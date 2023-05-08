@@ -6,6 +6,7 @@ import Card from "@/libsComponents/Card";
 import { CreateDonationChangeHandler } from "@/redux/CreateDonationSlice";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
@@ -31,8 +32,10 @@ interface ApiResponse<T> {
 }
 
 export default function Document() {
+
   const dispatch = useDispatch();
   const supabase = createClient();
+  const router = useRouter()
 
  
   const [uploadData, setUplaodData] = useState({
@@ -205,7 +208,14 @@ export default function Document() {
               <div className="sticky bottom-0 w-full ">
                 <Card>
                   <div className="flex justify-end ">
-                    <button className="bg-[#02a95c] rounded-md text-white px-8 py-3">
+                    <button
+                      className="bg-[#02a95c] rounded-md text-white px-8 py-3"
+                      onClick={() =>
+                        router.push(
+                          "/create/category/fundfor/goal/signup/document/information"
+                        )
+                      }
+                    >
                       Continue
                     </button>
                   </div>

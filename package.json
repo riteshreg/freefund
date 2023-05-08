@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@heroicons/react": "^2.0.17",
     "@material-tailwind/react": "^1.4.2",
     "@reduxjs/toolkit": "^1.9.5",
@@ -18,6 +19,7 @@
     "@types/react": "18.0.38",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
+    "chart.js": "^4.3.0",
     "encoding": "^0.1.13",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
@@ -27,6 +29,7 @@
     "node-fetch": "2.6.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-confetti": "^6.1.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
